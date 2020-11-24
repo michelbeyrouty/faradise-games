@@ -1,11 +1,11 @@
 const HTTP_EXITS = sails.config.custom.HTTP_EXITS;
 
-module.exports = function invalidAuthHeader (optionalData = sails.__('responses.invalidAuthHeader')) {
+module.exports = function invalidNickName (optionalData = sails.__('responses.invalidNickName')) {
 
   try {
   // Define the infoCodes for more specific details
     const infoCodes = {
-      [HTTP_EXITS.BAD_REQUEST.infoCodes.INVALID_AUTH_HEADER]: optionalData,
+      [HTTP_EXITS.BAD_REQUEST.infoCodes.INVALID_NICK_NAME]: optionalData,
     };
 
     // Call parent response

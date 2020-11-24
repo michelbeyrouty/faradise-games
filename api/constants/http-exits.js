@@ -19,7 +19,6 @@ module.exports = {
   ALREADY_DONE: {
     statusCode: 210,
     infoCodes:  {
-      CARD_ALREADY_REGISTERED: 210.1,
     },
   },
 
@@ -31,10 +30,8 @@ module.exports = {
   BAD_REQUEST: {
     statusCode: 400,
     infoCodes:  {
-      INVALID_AUTH_HEADER:             400.1,
-      INVALID_AUTH_TOKEN:              400.2,
-      AUTH_TOKEN_EXPIRED:              400.3,
-      INVALID_GAME_SESSION_ALPHA_CODE: 400.4,
+      INVALID_PASSWORD:  400.1,
+      INVALID_NICK_NAME: 400.2,
     },
   },
 
@@ -42,7 +39,6 @@ module.exports = {
   UNAUTHORIZED: {
     statusCode: 401,
     infoCodes:  {
-      PLAYER_ALREADY_IN_GAME_SESSION: 401.1,
     },
   },
 
@@ -50,7 +46,6 @@ module.exports = {
   FORBIDDEN: {
     statusCode: 403,
     infoCodes:  {
-      INVALID_AUTH_TOKEN: 403.1,
     },
   },
 
@@ -58,7 +53,6 @@ module.exports = {
   NOT_FOUND: {
     statusCode: 404,
     infoCodes:  {
-      MODULE_NOT_FOUND:       404.1,
       USER_NOT_FOUND:         404.2,
       GAME_SESSION_NOT_FOUND: 404.3,
     },
