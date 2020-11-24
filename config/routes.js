@@ -4,7 +4,8 @@ module.exports.routes = {
   'GET /health/ping': 'HealthController.ping',
 
   // player
-  'POST /player': 'PlayerController.register',
+  'POST /player/register': 'PlayerController.register',
+  'POST /player':          'PlayerController.login',
 
 
 };
