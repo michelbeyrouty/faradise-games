@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "faradise-games",
+  "private_key_id": "dca32ac1b1da1578b8d453bc90f882df67aefe63",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDtTOO1QEOkV6ut\nKYpR4miPvJf7PZgLwlbsfymjVVrIjIGDRSyjia9/dBNXQYzLlizhcokPTkQSBSYG\nK5bNrM1ESM0sDOQbZR8sRjei4A+P0NL9hJo90TFNBhs+GnWZIpSYGcscMGbrC+Nq\no1eXIeKCjnQpw8pXT1Wa5oD6lK/eGoJjwW3rG6DTwjMEDSrFBhgydcYOdxcBEhdU\nMmxbj69Yi105HYvBjN59/Bvn8P60wicgKQ596mqE/nVKYJ9hzb0R1WRT6kXUdHwu\nXDK323gCYjHxtF0d2EBTOVl5UN+UcRJ5VSRdrAX4GlWfWlo/yjPhVvSeLZvbGMYP\nnQL5TMLlAgMBAAECggEAAIVez8mHgiKfnBnVAtm3k6OP40T3d24zj5gu71YowPt9\n/NQk/cSSFmtPpLxWz9ozQhVVs7LIaGqpTPHunNNWiAe6xP9IXaDp6W4mCOLNR9Oq\n1b3FI75PXFcbNZ3uMgv9gaSvrVoqjrybW1P9awENziLd7bcxJmoKDqmXXE/UMouS\nGFrG3lYFQ0v342o1NoI27bsRFFq1e9fDZ5UAb8zR36Gw/wc7c5ksAcpqs/eVYsuP\nueB3G4MTWPIH5FFUZNkOQxF8heUU/fDE+le0iV1KcikJi0Mu6Ekokt5Eaq75npXY\nhA64gyx6v4MxCqdur8lmQktGVxTR/+T4cR14ql7baQKBgQD8AOdiLOhrNBWWWY3Y\n+TLMPT283REONNsmWOyAQOcGoEEUyzON5YxIku7TZSVNQXnCqXAJeXwtySYyCB41\nj30mfTiw+7zUuaaeNrcw6x8xSWHjmBwgvYHIfLxMQj4X+qPb+7Zmhj6voUfGs3O/\nJf6wodMGMZgKzGFu5HDWD5xMowKBgQDxEEr/FmrD68UWVSHkTV4IBpnQCB68Cq0U\n5MfgoVG+UGdO5NIc05EXczGp/+DwaQParuYoA6+w3qbWoQB3h7qfkeuBKV1DiYqB\nj9yWZg51VNGGivTfVfa+inlM1O/pdKgWbWU1+GjfClF3wJCzg/ocLey4NE4mFBts\n/r3VsqZi1wKBgHt6NeX0+y0MKEezOb3G3Q0WNNoFuAWuAHOZvshZBNpKS5lUt74f\na81jsYIDXXOtUWwAedUqoZ4NoZmCQMsds8TYNp8BulTBYtLDHJ/rlS0hN8W9Eos4\nUA9cjycOjj5RoVh4zbcOsEh+Th0ecOiIRXNm12+BfW5NFrCvXlqE66DhAoGBAKi/\npBA/bAusXvIMNEZyFlH99OxY0tMFkjXfFUBdDTDxbfAfZCpDu/yzad+8PIVurgEG\nkB0Qv4tLwXTbjc0e2XhcmIR5JU1i2e9qeptZ4+Mkteu+GD7DGZA2tUUghrVhMU1J\n1SDbvOXtfiwbQ/A2gf359AzaqJ4lUzGQfek7PxhPAoGBAK9EoD1CdPLTfbo/NfUr\nfe6CR27OFtrhpk7a8y54hFCPntBZSy7ussWyWVTstO6G6ztFhdLJ5fgFSw4kX/Hc\nxHSlLa7nQjQzUSlKp2vH9lSYsvbVqTv30pDKTaEKgelhTqRGSb3xLvd2dUuWtFHO\nnlGMazhwxO5U0RRunp+QXRyr\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-5kmzk@faradise-games.iam.gserviceaccount.com",
+  "client_id": "113065797707273562130",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-5kmzk%40faradise-games.iam.gserviceaccount.com"
+}
