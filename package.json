@@ -10,13 +10,14 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "firebase-admin": "^9.4.1",
     "grunt": "1.0.4",
+    "password-hash": "^1.2.2",
     "sails": "^1.4.0",
     "sails-hook-grunt": "^4.0.0",
     "sails-hook-orm": "^2.1.1",
     "sails-hook-sockets": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "5.16.0"
+    "eslint": "^5.16.0"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",

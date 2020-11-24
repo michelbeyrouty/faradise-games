@@ -2,9 +2,9 @@
   //   ╔═╗╔═╗╦  ╦╔╗╔╔╦╗┬─┐┌─┐
   //   ║╣ ╚═╗║  ║║║║ ║ ├┬┘│
   //  o╚═╝╚═╝╩═╝╩╝╚╝ ╩ ┴└─└─┘
-  // A set of basic code conventions designed to encourage quality and consistency
-  // across your Sails app's code base.  These rules are checked against
-  // automatically any time you run `npm test`.
+  // A set of basic code conventions (similar to a .jshintrc file) designed to
+  // encourage quality and consistency across your Sails app's code base.
+  // These rules are checked against automatically any time you run `npm test`.
   // 
   // > An additional eslintrc override file is included in the `assets/` folder
   // > right out of the box.  This is specifically to allow for variations in acceptable
@@ -27,7 +27,10 @@
   },
 
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
 
   "globals": {
@@ -36,19 +39,19 @@
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     "Promise": true,
     "sails": true,
-    "_": true
+    "_": true,
+    "async": true
     // …and any others (e.g. `"Organization": true`)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   },
 
   "rules": {
-    "block-scoped-var":             ["error"],
     "callback-return":              ["error", ["done", "proceed", "next", "onwards", "callback", "cb"]],
     "camelcase":                    ["warn", {"properties":"always"}],
     "comma-style":                  ["warn", "last"],
-    "curly":                        ["warn"],
+    "curly":                        ["error"],
     "eqeqeq":                       ["error", "always"],
-    "eol-last":                     ["warn"],
+    "eol-last":                     ["warn", "always"],
     "handle-callback-err":          ["error"],
     "indent":                       ["warn", 2, {
       "SwitchCase": 1,
@@ -60,7 +63,6 @@
       "ObjectExpression": 1,
       "ignoredNodes": ["ConditionalExpression"]
     }],
-    "linebreak-style":              ["error", "unix"],
     "no-dupe-keys":                 ["error"],
     "no-duplicate-case":            ["error"],
     "no-extra-semi":                ["warn"],
@@ -82,9 +84,30 @@
     "one-var":                      ["warn", "never"],
     "prefer-arrow-callback":        ["warn", {"allowNamedFunctions":true}],
     "quotes":                       ["warn", "single", {"avoidEscape":false, "allowTemplateLiterals":true}],
-    "semi":                         ["warn", "always"],
+    "semi":                         ["error", "always"],
     "semi-spacing":                 ["warn", {"before":false, "after":true}],
-    "semi-style":                   ["warn", "last"]
+    "semi-style":                   ["warn", "last"],
+    "comma-dangle":                 ["warn", "always-multiline"],
+    "comma-spacing":                ["warn", { "before": false, "after": true }],
+    "key-spacing":                  ["warn", {  
+                                                "align": "value",
+                                                "beforeColon": false 
+                                              }],
+    "space-before-function-paren":  ["warn", "always"],
+    "space-infix-ops":              ["warn", {"int32Hint": false}],
+    "brace-style":                  ["warn", "1tbs", { "allowSingleLine": true }],
+    "no-multiple-empty-lines":      ["warn", { "max": 2, "maxEOF": 1, "maxBOF": 1 }],
+    "operator-linebreak":           ["warn", "before"],
+    "no-cond-assign":               ["warn", "always"],
+    "dot-location":                 ["warn", "property"],
+    "max-len":                      ["warn", { "code": 120 }],
+    "object-curly-spacing":         ["error", "always"],
+    "space-before-blocks":          ["error", "always"],
+    "spaced-comment":               ["warn", "always", { "exceptions": ["-", "+", "*"] }],
+    "keyword-spacing":              ["error", { "before": true, "after": true}],
+    "prefer-const":                 "error",
+    "no-const-assign":              "error",
+    "require-await":                "error",
   }
 
 }
