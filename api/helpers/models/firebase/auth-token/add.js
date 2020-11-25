@@ -20,8 +20,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const authTokensRef = firebaseDb.collection('authToken');
-    await authTokensRef.doc(inputs.authToken).set({
+    const authTokenRef = firebaseDb.collection('authTokens');
+    await authTokenRef.doc(inputs.authToken).set({
       playerId: inputs.playerId,
     });
 

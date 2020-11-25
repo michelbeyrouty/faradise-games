@@ -41,7 +41,7 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     let player = await firebaseDb.collection('players').add(inputs);
-    player = await firebaseDb.collection('gameSessions').doc(player.id).get();
+    player = await firebaseDb.collection('players').doc(player.id).get();
 
     return exits.success({
       ...player.data(),

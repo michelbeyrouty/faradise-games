@@ -17,7 +17,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const authTokenRef = firebaseDb.collection('authToken').doc(inputs.authToken);
+    const authTokenRef = firebaseDb.collection('authTokens').doc(inputs.authToken);
     const authToken = await authTokenRef.get();
 
     if (!authToken.exists) {
