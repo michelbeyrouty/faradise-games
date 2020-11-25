@@ -39,6 +39,7 @@ module.exports = {
   UNAUTHORIZED: {
     statusCode: 401,
     infoCodes:  {
+      INVALID_AUTH_HEADER: 401.1,
     },
   },
 
@@ -53,8 +54,8 @@ module.exports = {
   NOT_FOUND: {
     statusCode: 404,
     infoCodes:  {
-      USER_NOT_FOUND:         404.2,
-      GAME_SESSION_NOT_FOUND: 404.3,
+      PLAYER_NOT_FOUND:       404.1,
+      GAME_SESSION_NOT_FOUND: 404.2,
     },
   },
 

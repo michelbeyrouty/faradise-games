@@ -25,18 +25,22 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
+      const { nickName, password: inputPassword } = inputs;
 
-      const { playerId } = player = await sails.helpers.models.firebase.player.getByNickName.with(inputs);
+      const { playerId } = player = await sails.helpers.models.firebase.player.getByNickName.with({ nickName });
 
       _verifyPassword({
-        password:       inputs.password,
+        password:       inputPassword,
         hashedPassword: player.password,
       });
 
       const authToken = await sails.helpers.auth.generateToken.with({ playerId });
-      authCach.set( authToken, playerId, 10000 );
+      authCach(authToken, playerId);
 
-      exits.success(player);
+      exits.success({
+        player,
+        authToken,
+      });
 
     } catch (error) {
       switch (_.get(error, 'raw.code') || _.get(error, 'code'))  {

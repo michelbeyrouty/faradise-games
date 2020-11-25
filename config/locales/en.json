@@ -2,5 +2,6 @@
 	"Welcome": "Welcome",
 	"A brand new app.": "A brand new app.",
 	"responses.invalidNickName": "Invalid nickName",
-	"responses.invalidPassword": "Invalid password"
+	"responses.invalidPassword": "Invalid password",
+	"responses.playerNotFound": "responses.playerNotFound"
 }

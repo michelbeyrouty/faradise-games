@@ -17,6 +17,8 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*':               true,
+  'gameSession/add': 'isAuthenticated',
+
 
 };

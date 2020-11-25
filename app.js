@@ -71,8 +71,7 @@ function _initializeFirebase () {
 }
 
 function _initializeCach () {
-  NodeCache = require( 'node-cache' );
-  authCach = new NodeCache();
+  authCach = require('simple-data-storage');
 
   return { authCach };
 }

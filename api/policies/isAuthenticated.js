@@ -18,37 +18,25 @@ async function _authenticate (request, response, next) {
   try {
 
     const header = _.get(request, 'headers.authorization');
-    const idToken = _fetchIdToken({ header });
-    const userId = await _fetchPlayerId({ idToken });
-    const user = await sails.helpers.models.user.getById.with({ userId });
+    const bearerToken = _fetchIdToken({ header });
+    const playerId = _fetchPlayerId({ bearerToken });
+    const player = await sails.helpers.models.firebase.player.getById.with({ playerId });
 
     // SUCCESS
-    request.user = user;
+    request.player = player;
 
     return next();
 
   } catch (error) {
 
-    switch (_.get(error, 'code')) {
+    switch (_.get(error, 'code') || _.get(error, 'raw.code')) {
 
-      case FIREBASE_EXITS.INVALID_AUTH_TOKEN:
-        response.invalidAuthToken();
-        break;
-
-      case FIREBASE_EXITS.AUTH_TOKEN_EXPIRED:
-        response.authTokenExpired();
-        break;
-
-      case 'userNotFound':
-        response.userNotFound();
+      case 'playerNotFound':
+        response.playerNotFound();
         break;
 
       case 'invalidAuthHeader':
         response.invalidAuthHeader();
-        break;
-
-      case 'moduleNotFound':
-        response.moduleNotFound();
         break;
 
       default:
@@ -63,15 +51,12 @@ async function _authenticate (request, response, next) {
  * _fetchPlayerId
  *
  * @param {object} inputs
- * @param {string} inputs.idToken
+ * @param {string} inputs.bearerToken
  *
  */
-async function _fetchPlayerId ({ idToken }) {
+function _fetchPlayerId ({ bearerToken }) {
 
-  const decodedToken = await firebaseAdmin.auth().verifyIdToken(idToken);
-  const playerId = decodedToken.uid;
-
-  return playerId;
+  return authCach(bearerToken);
 }
 
 
