@@ -44,10 +44,10 @@ function _mapResult ({ result }) {
 
   const playersList = [];
 
-  result.forEach(gameSession => {
+  result.forEach(player => {
     playersList.push({
-      ...gameSession.data(),
-      gameSessionId: gameSession.id,
+      ...player.data(),
+      playerId: player.id,
     });
   });
 

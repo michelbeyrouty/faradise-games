@@ -1,6 +1,6 @@
 /**
  * app.js
- * 
+ *
  * https://console.firebase.google.com/u/0/project/faradise-games/overview
  *
  * Use `app.js` to run your app without `sails lift`.
@@ -28,14 +28,14 @@
 // > Note: This is not required in order to lift, but it is a convenient default.
 process.chdir(__dirname);
 
-
-
 // Attempt to import `sails` dependency, as well as `rc` (for loading `.sailsrc` files).
 var sails;
 var rc;
 try {
   sails = require('sails');
   const { firebaseAdmin, faradiseGamesApp, firebaseDb } = _initializeFirebase();
+  const { authCach } = _initializeCach();
+  _initializeEnv();
   rc = require('sails/accessible/rc');
 } catch (err) {
   console.error('Encountered an error when attempting to require(\'sails\'):');
@@ -50,14 +50,12 @@ try {
   console.error('not run this file (`app.js`), but it will do exactly the same thing.');
   console.error('(It even uses your app directory\'s local Sails install, if possible.)');
   return;
-}//-•
-
+}// -•
 
 // Start server
 sails.lift(rc('sails'));
 
-//Private function 
-
+// Private function
 function _initializeFirebase () {
 
   firebaseAdmin = require('firebase-admin');
@@ -70,4 +68,17 @@ function _initializeFirebase () {
   firebaseDb = firebaseAdmin.firestore();
 
   return { firebaseAdmin, faradiseGamesApp, firebaseDb };
+}
+
+function _initializeCach () {
+  NodeCache = require( 'node-cache' );
+  authCach = new NodeCache();
+
+  return { authCach };
+}
+
+function _initializeEnv () {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'development') {
+    require('dotenv').config();
+  }
 }
