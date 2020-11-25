@@ -34,6 +34,7 @@ module.exports = {
         hashedPassword: player.password,
       });
 
+      // TODO: fix cach
       const authToken = await sails.helpers.auth.generateToken.with({ playerId });
       authCach(authToken, playerId);
 
