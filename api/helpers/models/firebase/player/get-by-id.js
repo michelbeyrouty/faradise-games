@@ -1,7 +1,7 @@
 module.exports = {
 
-  friendlyName: 'Get gameSession by gameSessionAlphaCode',
-  description:  'Get gameSession by gameSessionAlphaCode',
+  friendlyName: 'Get gameSession by playerId',
+  description:  'Get gameSession by playerId',
 
   inputs: {
     playerId: {

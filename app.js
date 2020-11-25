@@ -34,7 +34,6 @@ var rc;
 try {
   sails = require('sails');
   const { firebaseAdmin, faradiseGamesApp, firebaseDb } = _initializeFirebase();
-  const { authCach } = _initializeCach();
   _initializeEnv();
   rc = require('sails/accessible/rc');
 } catch (err) {
@@ -68,12 +67,6 @@ function _initializeFirebase () {
   firebaseDb = firebaseAdmin.firestore();
 
   return { firebaseAdmin, faradiseGamesApp, firebaseDb };
-}
-
-function _initializeCach () {
-  authCach = require('simple-data-storage');
-
-  return { authCach };
 }
 
 function _initializeEnv () {

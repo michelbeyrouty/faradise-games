@@ -34,9 +34,9 @@ module.exports = {
         hashedPassword: player.password,
       });
 
-      // TODO: fix cach
+      // Save {authToken: playerId} pair
       const authToken = await sails.helpers.auth.generateToken.with({ playerId });
-      authCach(authToken, playerId);
+      await sails.helpers.models.firebase.authToken.add.with({ authToken, playerId });
 
       exits.success({
         player,

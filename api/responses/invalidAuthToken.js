@@ -1,11 +1,11 @@
 const HTTP_EXITS = sails.config.custom.HTTP_EXITS;
 
-module.exports = function invalidAuthHeader (optionalData = sails.__('responses.invalidAuthHeader')) {
+module.exports = function invalidAuthToken (optionalData = sails.__('responses.invalidAuthToken')) {
 
   try {
   // Define the infoCodes for more specific details
     const infoCodes = {
-      [HTTP_EXITS.UNAUTHORIZED.infoCodes.INVALID_AUTH_HEADER]: optionalData,
+      [HTTP_EXITS.UNAUTHORIZED.infoCodes.INVALID_AUTH_TOKEN]: optionalData,
     };
 
     // Call parent response

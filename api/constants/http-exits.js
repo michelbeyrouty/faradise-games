@@ -40,6 +40,7 @@ module.exports = {
     statusCode: 401,
     infoCodes:  {
       INVALID_AUTH_HEADER: 401.1,
+      INVALID_AUTH_TOKEN:  401.2,
     },
   },
 

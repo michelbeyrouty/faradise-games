@@ -1,5 +1,3 @@
-const FIREBASE_EXITS = sails.config.custom.FIREBASE_EXITS;
-
 module.exports = _authenticate;
 
 /**
@@ -18,8 +16,8 @@ async function _authenticate (request, response, next) {
   try {
 
     const header = _.get(request, 'headers.authorization');
-    const bearerToken = _fetchIdToken({ header });
-    const playerId = _fetchPlayerId({ bearerToken });
+    const authToken = _fetchAuthToken({ header });
+    const playerId = await _fetchPlayerId({ authToken });
     const player = await sails.helpers.models.firebase.player.getById.with({ playerId });
 
     // SUCCESS
@@ -39,6 +37,10 @@ async function _authenticate (request, response, next) {
         response.invalidAuthHeader();
         break;
 
+      case 'invalidAuthToken':
+        response.invalidAuthToken();
+        break;
+
       default:
         response.serverError(error);
     }
@@ -51,12 +53,13 @@ async function _authenticate (request, response, next) {
  * _fetchPlayerId
  *
  * @param {object} inputs
- * @param {string} inputs.bearerToken
+ * @param {string} inputs.authToken
  *
  */
-function _fetchPlayerId ({ bearerToken }) {
+async function _fetchPlayerId ({ authToken }) {
 
-  return authCach(bearerToken);
+  const player = await sails.helpers.models.firebase.authToken.getById.with({ authToken });
+  return player.playerId;
 }
 
 
@@ -67,7 +70,7 @@ function _fetchPlayerId ({ bearerToken }) {
  * @param {string} inputs.header
  *
  */
-function _fetchIdToken ({ header = '' }) {
+function _fetchAuthToken ({ header = '' }) {
 
   const isBearer = (header.split(' ')[0] === 'Bearer');
 
