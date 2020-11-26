@@ -4,5 +4,7 @@
 	"responses.invalidNickName": "Invalid nickName",
 	"responses.invalidPassword": "Invalid password",
 	"responses.playerNotFound": "player not found",
-	"responses.invalidAuthToken": "invalid auth token"
+	"responses.invalidAuthToken": "invalid auth token",
+	"responses.gameConfigNotFound": "responses.gameConfigNotFound",
+	"responses.duplicatePlayerInGame": "responses.duplicatePlayerInGame"
 }

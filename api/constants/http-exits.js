@@ -30,9 +30,10 @@ module.exports = {
   BAD_REQUEST: {
     statusCode: 400,
     infoCodes:  {
-      INVALID_PASSWORD:  400.1,
-      INVALID_NICK_NAME: 400.2,
-      INVALID_PLAYER_ID: 400.3,
+      INVALID_PASSWORD:         400.1,
+      INVALID_NICK_NAME:        400.2,
+      INVALID_PLAYER_ID:        400.3,
+      DUPLICATE_PLAYER_IN_GAME: 400.4,
     },
   },
 
@@ -58,6 +59,7 @@ module.exports = {
     infoCodes:  {
       PLAYER_NOT_FOUND:       404.1,
       GAME_SESSION_NOT_FOUND: 404.2,
+      GAME_CONFIG_NOT_FOUND:  404.3,
     },
   },
 
