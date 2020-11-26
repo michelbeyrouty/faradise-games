@@ -10,4 +10,9 @@ module.exports.custom = {
 
   HTTP_EXITS,
 
+  GAME_TYPES: {
+    CHESS:         'chess',
+    CATAN_CLASSIC: 'catan_classic',
+  },
+
 };
