@@ -6,6 +6,7 @@ module.exports.routes = {
   // player
   'POST /player/register': 'PlayerController.register',
   'POST /player':          'PlayerController.login',
+  'DELETE /player':        'PlayerController.logout',
 
   // game session
   'POST /game-session': 'GameSessionController.add',

@@ -2,8 +2,8 @@ const passwordHash = require('password-hash');
 
 module.exports = {
 
-  friendlyName: 'player registration',
-  description:  'player registration',
+  friendlyName: 'login',
+  description:  'login',
 
   inputs: {
     nickName: {
@@ -70,5 +70,4 @@ function _verifyPassword ({ password, hashedPassword }) {
   if (!passwordHash.verify(password, hashedPassword)) {
     throw { code: 'invalidPassword' };
   }
-
 }
