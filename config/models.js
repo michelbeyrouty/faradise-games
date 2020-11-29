@@ -69,9 +69,9 @@ module.exports.models = {
   ***************************************************************************/
 
   attributes: {
-    createdAt: { type: 'number', autoCreatedAt: true, },
-    updatedAt: { type: 'number', autoUpdatedAt: true, },
-    id: { type: 'number', autoIncrement: true, },
+    createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
+    id:        { type: 'number', autoIncrement: true },
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:
@@ -101,7 +101,7 @@ module.exports.models = {
   ******************************************************************************/
 
   dataEncryptionKeys: {
-    default: 'C8D+dJZO9eHrD9u7AqbAUGB0NYcbnOj14OmehffE+q8='
+    default: 'C8D+dJZO9eHrD9u7AqbAUGB0NYcbnOj14OmehffE+q8=',
   },
 
 
@@ -118,7 +118,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  cascadeOnDestroy: true
+  cascadeOnDestroy: true,
 
 
 };
