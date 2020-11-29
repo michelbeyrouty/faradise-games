@@ -244,9 +244,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://faradise-games.herokuapp.com/',
-    // ],
+    onlyAllowOrigins: [
+      'https://faradise-games.herokuapp.com',
+    ],
 
 
     /***************************************************************************
