@@ -31,7 +31,7 @@ module.exports = {
     statusCode: 400,
     infoCodes:  {
       INVALID_PASSWORD:         400.1,
-      INVALID_NICK_NAME:        400.2,
+      INVALID_USER_NAME:        400.2,
       INVALID_PLAYER_ID:        400.3,
       DUPLICATE_PLAYER_IN_GAME: 400.4,
     },

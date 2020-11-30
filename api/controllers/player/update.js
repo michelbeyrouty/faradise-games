@@ -2,20 +2,32 @@ const passwordHash = require('password-hash');
 
 module.exports = {
 
-  friendlyName: 'player registration',
-  description:  'player registration',
+  friendlyName: 'update',
+  description:  'update player details',
 
   inputs: {
+    firstName: {
+      type:     'string',
+      required: true,
+    },
+    lastName: {
+      type:     'string',
+      required: true,
+    },
     userName: {
       type:     'string',
       required: true,
     },
-    password: {
-      type:     'string',
+    phoneNumber: {
+      type:     'number',
       required: true,
     },
     email: {
       type:     'string',
+      required: true,
+    },
+    dateOfBirthTimeStamp: {
+      type:     'number',
       required: true,
     },
   },
@@ -27,9 +39,15 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
-      inputs.password = passwordHash.generate(inputs.password);
 
-      const player = await sails.helpers.models.firebase.player.add.with(inputs);
+      const { playerId } = this.req.player;
+      inputs.playerId = playerId;
+
+      if (inputs.password) {
+        inputs.password = passwordHash.generate(inputs.password);
+      }
+
+      const player = await sails.helpers.models.firebase.player.updateById.with(inputs);
 
       exits.success({
         player,
