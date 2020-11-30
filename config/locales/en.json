@@ -1,10 +1,11 @@
 {
 	"Welcome": "Welcome",
 	"A brand new app.": "A brand new app.",
-	"responses.invalidNickName": "Invalid nickName",
+	"responses.invalidUserName": "Invalid UserName",
 	"responses.invalidPassword": "Invalid password",
 	"responses.playerNotFound": "player not found",
 	"responses.invalidAuthToken": "invalid auth token",
 	"responses.gameConfigNotFound": "responses.gameConfigNotFound",
-	"responses.duplicatePlayerInGame": "responses.duplicatePlayerInGame"
+	"responses.duplicatePlayerInGame": "responses.duplicatePlayerInGame",
+	"responses.invalidAuthHeader": "responses.invalidAuthHeader"
 }

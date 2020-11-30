@@ -1,17 +1,17 @@
 module.exports = {
 
-  friendlyName: 'Get gameSession by gameSessionAlphaCode',
-  description:  'Get gameSession by gameSessionAlphaCode',
+  friendlyName: 'Get player',
+  description:  'Get player by userName',
 
   inputs: {
-    nickName: {
+    userName: {
       type:     'string',
       required: true,
     },
   },
 
   exits: {
-    invalidNickName: { description: 'invalidNickName' },
+    invalidUserName: { description: 'invalidUserName' },
     success:         { description: 'gameSession' },
   },
 
@@ -19,11 +19,11 @@ module.exports = {
 
     const result = await firebaseDb
       .collection('players')
-      .where('nickName', '==', inputs.nickName)
+      .where('userName', '==', inputs.userName)
       .get();
 
     if (result.empty) {
-      throw { code: 'invalidNickName' };
+      throw { code: 'invalidUserName' };
     }
 
     const { player } = _mapResult({ result });

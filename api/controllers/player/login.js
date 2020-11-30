@@ -6,7 +6,7 @@ module.exports = {
   description:  'login',
 
   inputs: {
-    nickName: {
+    userName: {
       type:     'string',
       required: true,
     },
@@ -18,16 +18,16 @@ module.exports = {
 
   exits: {
     invalidPassword: { responseType: 'invalidPassword' },
-    invalidNickName: { responseType: 'invalidNickName' },
+    invalidUserName: { responseType: 'invalidUserName' },
     serverError:     { responseType: 'serverError' },
     success:         { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
     try {
-      const { nickName, password: inputPassword } = inputs;
+      const { userName, password: inputPassword } = inputs;
 
-      const { playerId } = player = await sails.helpers.models.firebase.player.getByNickName.with({ nickName });
+      const { playerId } = player = await sails.helpers.models.firebase.player.getByUserName.with({ userName });
 
       _verifyPassword({
         password:       inputPassword,
@@ -50,8 +50,8 @@ module.exports = {
           exits.invalidPassword();
           break;
 
-        case 'invalidNickName':
-          exits.invalidNickName();
+        case 'invalidUserName':
+          exits.invalidUserName();
           break;
 
         default:

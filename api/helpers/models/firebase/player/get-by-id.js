@@ -11,7 +11,7 @@ module.exports = {
   },
 
   exits: {
-    invalidNickName: { description: 'invalidNickName' },
+    invalidUserName: { description: 'invalidUserName' },
     success:         { description: 'gameSession' },
   },
 
