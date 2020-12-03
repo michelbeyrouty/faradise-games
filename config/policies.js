@@ -21,5 +21,6 @@ module.exports.policies = {
   'gameSession/add': 'isAuthenticated',
   'player/logout':   'isAuthenticated',
   'player/update':   'isAuthenticated',
+  'player/list':     'isAuthenticated',
 
 };
