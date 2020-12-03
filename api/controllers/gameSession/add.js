@@ -16,23 +16,23 @@ module.exports = {
   },
 
   exits: {
-    duplicatePlayerInGame: { responseType: 'duplicatePlayerInGame' },
-    gameConfigNotFound:    { responseType: 'gameConfigNotFound' },
-    playerNotFound:        { responseType: 'playerNotFound' },
-    serverError:           { responseType: 'serverError' },
-    success:               { description: 'ok' },
+    playerHasPendingGameSession: { responseType: 'playerHasPendingGameSession' },
+    duplicatePlayerInGame:       { responseType: 'duplicatePlayerInGame' },
+    gameConfigNotFound:          { responseType: 'gameConfigNotFound' },
+    playerNotFound:              { responseType: 'playerNotFound' },
+    serverError:                 { responseType: 'serverError' },
+    success:                     { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
     try {
 
-      // TODO: think of a way to prevent same requests
 
       const gameSession = await _fetchGameSession(inputs);
       await gameSession.validatePlayers();
       const scoresMap = gameSession.computeScores();
 
-      const { gameSessionId } = await sails.helpers.models.firebase.gameSession.add.with({
+      const gameSessionObject = { gameSessionId } = await sails.helpers.models.firebase.gameSession.add.with({
         ...inputs,
         scoresMap,
       });
@@ -41,13 +41,20 @@ module.exports = {
         await sails.helpers.models.firebase.player.addGameSession.with({ playerId, gameSessionId });
       }
 
-      exits.success(this.req.player);
+      exits.success({
+        gameSession: gameSessionObject,
+      });
 
     } catch (error) {
       switch (_.get(error, 'raw.code') || _.get(error, 'code'))  {
 
         case 'playerNotFound':
           exits.playerNotFound();
+          break;
+
+        case 'playerHasPendingGameSession':
+          const playerId = _.get(error, 'raw.playerId') || _.get(error, 'playerId');
+          exits.playerHasPendingGameSession({ playerId });
           break;
 
         case 'gameConfigNotFound':

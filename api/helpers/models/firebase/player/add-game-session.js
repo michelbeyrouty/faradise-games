@@ -25,7 +25,7 @@ module.exports = {
     const { gameSessionsList = [] } = player.data();
     gameSessionsList.push(inputs.gameSessionId);
 
-    await playerRef.update({ gameSessionsList: gameSessionsList });
+    await playerRef.update({ pendingGameSessionsList: gameSessionsList });
 
     return exits.success();
   },

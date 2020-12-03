@@ -1,3 +1,5 @@
+const GAME_APPROVAL_STATUS = sails.config.custom.GAME_APPROVAL_STATUS;
+
 module.exports = {
 
   friendlyName: 'Add gameSession',
@@ -25,7 +27,10 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let gameSession = await firebaseDb.collection('gameSessions').add(inputs);
+    let gameSession = await firebaseDb.collection('gameSessions').add({
+      ...inputs,
+      approvalStatus: GAME_APPROVAL_STATUS.PENDING,
+    });
     gameSession = await firebaseDb.collection('gameSessions').doc(gameSession.id).get();
 
     return exits.success({

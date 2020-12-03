@@ -8,5 +8,6 @@
 	"responses.gameConfigNotFound": "responses.gameConfigNotFound",
 	"responses.duplicatePlayerInGame": "responses.duplicatePlayerInGame",
 	"responses.invalidAuthHeader": "responses.invalidAuthHeader",
-	"responses.userNameAlreadyRegistered": "responses.userNameAlreadyRegistered"
+	"responses.userNameAlreadyRegistered": "responses.userNameAlreadyRegistered",
+	"responses.playerHasPendingGameSession": "responses.playerHasPendingGameSession"
 }

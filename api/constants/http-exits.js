@@ -42,8 +42,9 @@ module.exports = {
   UNAUTHORIZED: {
     statusCode: 401,
     infoCodes:  {
-      INVALID_AUTH_HEADER: 401.1,
-      INVALID_AUTH_TOKEN:  401.2,
+      INVALID_AUTH_HEADER:             401.1,
+      INVALID_AUTH_TOKEN:              401.2,
+      PLAYER_HAS_PENDING_GAME_SESSION: 401.3,
     },
   },
 

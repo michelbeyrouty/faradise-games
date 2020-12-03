@@ -8,6 +8,10 @@ module.exports.custom = {
     INVALID_AUTH_TOKEN: 'auth/argument-error',
   },
 
+  GAME_APPROVAL_STATUS: {
+    PENDING: 'PENDING',
+  },
+
   HTTP_EXITS,
 
   GAME_TYPES: {

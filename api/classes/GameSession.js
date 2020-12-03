@@ -29,7 +29,11 @@ class GameSession {
     }
 
     for (const playerId of this.playerIdsList) {
-      await sails.helpers.models.firebase.player.getById.with({ playerId });
+      const player = await sails.helpers.models.firebase.player.getById.with({ playerId });
+
+      if (player.pendingGameSessionsList.length !== 0) {
+        throw { code: 'playerHasPendingGameSession', playerId };
+      }
     }
   }
 
