@@ -18,7 +18,10 @@ module.exports = {
       type:     ['string'],
       required: true,
     },
-
+    approvalsMappedByUserId: {
+      type:     'json',
+      required: true,
+    },
   },
 
   exits: {

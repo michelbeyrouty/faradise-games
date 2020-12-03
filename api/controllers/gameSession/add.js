@@ -30,11 +30,12 @@ module.exports = {
 
       const gameSession = await _fetchGameSession(inputs);
       await gameSession.validatePlayers();
-      const scoresMap = gameSession.computeScores();
+      const { scoresMap, approvalsMappedByUserId } = gameSession.computeScores();
 
       const gameSessionObject = { gameSessionId } = await sails.helpers.models.firebase.gameSession.add.with({
         ...inputs,
         scoresMap,
+        approvalsMappedByUserId,
       });
 
       for (playerId of gameSession.playerIdsList) {

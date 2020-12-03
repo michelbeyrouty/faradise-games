@@ -14,7 +14,7 @@ class GameSession {
   /**
      * validatePlayers
      *
-     * validate player count, playerIds and duplicity
+     * validate player count, playerIds, pendingGameSessions and duplicity
      */
   async validatePlayers () {
 
@@ -45,14 +45,16 @@ class GameSession {
   */
   computeScores () {
     const scoresMap = {};
+    const approvalsMappedByUserId = {};
     let MAX_SCORE = this.maxScore * (1 + this.scoreMultiplier / 100);
 
     for (const playerId of this.playerIdsList) {
       MAX_SCORE = MAX_SCORE * this.DeliminatorsMap[this.playerIdsList.length].shift() / 100;
       scoresMap[playerId] = MAX_SCORE;
+      approvalsMappedByUserId[playerId] = false;
     }
 
-    return scoresMap;
+    return { scoresMap, approvalsMappedByUserId };
   }
 
 }
