@@ -7,5 +7,6 @@
 	"responses.invalidAuthToken": "invalid auth token",
 	"responses.gameConfigNotFound": "responses.gameConfigNotFound",
 	"responses.duplicatePlayerInGame": "responses.duplicatePlayerInGame",
-	"responses.invalidAuthHeader": "responses.invalidAuthHeader"
+	"responses.invalidAuthHeader": "responses.invalidAuthHeader",
+	"responses.userNameAlreadyRegistered": "responses.userNameAlreadyRegistered"
 }

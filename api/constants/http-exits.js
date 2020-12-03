@@ -19,6 +19,7 @@ module.exports = {
   ALREADY_DONE: {
     statusCode: 210,
     infoCodes:  {
+      PLAYER_ALREADY_REGISTERED: 210.1,
     },
   },
 
