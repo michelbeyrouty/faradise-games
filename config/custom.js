@@ -9,7 +9,8 @@ module.exports.custom = {
   },
 
   GAME_APPROVAL_STATUS: {
-    PENDING: 'PENDING',
+    PENDING:  'PENDING',
+    APPROVED: 'APPROVED',
   },
 
   HTTP_EXITS,

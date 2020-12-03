@@ -11,5 +11,7 @@ module.exports.routes = {
   'GET /player':           'PlayerController.list',
 
   // game session
-  'POST /game-session': 'GameSessionController.add',
+  'POST /game-session':         'GameSessionController.add',
+  'POST /game-session/approve': 'GameSessionController.approve',
+
 };
