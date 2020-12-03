@@ -7,28 +7,19 @@ module.exports = {
 
   inputs: {
     firstName: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     lastName: {
-      type:     'string',
-      required: true,
-    },
-    userName: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     phoneNumber: {
-      type:     'number',
-      required: true,
+      type: 'number',
     },
     email: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     dateOfBirthTimeStamp: {
-      type:     'number',
-      required: true,
+      type: 'number',
     },
   },
 

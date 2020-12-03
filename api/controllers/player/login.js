@@ -27,7 +27,7 @@ module.exports = {
     try {
       const { userName, password: inputPassword } = inputs;
 
-      const { playerId } = player = await sails.helpers.models.firebase.player.getByUserName.with({ userName });
+      const { playerId } = player = await sails.helpers.models.firebase.player.getById.with({ playerId: userName });
 
       _verifyPassword({
         password:       inputPassword,
