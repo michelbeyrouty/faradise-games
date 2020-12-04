@@ -1,7 +1,7 @@
 module.exports = {
 
-  friendlyName: 'Update gameSessionsList',
-  description:  'update gameSessionsList to player',
+  friendlyName: 'Add gameSession',
+  description:  'Add gameSession',
 
   inputs: {
     gameSessionId: {
@@ -15,17 +15,16 @@ module.exports = {
   },
 
   exits: {
-    success: { description: 'gameSession' },
+    success: { description: '' },
   },
 
   fn: async function (inputs, exits) {
 
     const playerRef = await firebaseDb.collection('players').doc(inputs.playerId);
-    const player = await playerRef.get();
-    const { gameSessionsList = [] } = player.data();
-    gameSessionsList.push(inputs.gameSessionId);
 
-    await playerRef.update({ gameSessionsList: gameSessionsList });
+    await playerRef.update({
+      pendingGameSession: inputs.gameSessionId,
+    });
 
     return exits.success();
   },

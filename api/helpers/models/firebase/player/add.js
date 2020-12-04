@@ -19,13 +19,18 @@ module.exports = {
   },
 
   exits: {
-    success: { description: 'player' },
+    userNameAlreadyRegistered: { description: 'player' },
+    success:                   { description: 'player' },
   },
 
   fn: async function (inputs, exits) {
 
-    let player = await firebaseDb.collection('players').add(inputs);
-    player = await firebaseDb.collection('players').doc(player.id).get();
+    const { userName, ...inputData } = inputs;
+
+    await _validateUniqueUserName(userName);
+
+    await firebaseDb.collection('players').doc(userName).set(inputData);
+    const player = await firebaseDb.collection('players').doc(userName).get();
 
     return exits.success({
       ...player.data(),
@@ -35,4 +40,21 @@ module.exports = {
   },
 
 };
+
+
+async function _validateUniqueUserName (userName) {
+
+  const playerRef = await firebaseDb.collection('players').doc(userName);
+  const player = await playerRef.get();
+
+  if (player.exists) {
+    throw {
+      code:   'userNameAlreadyRegistered',
+      player: {
+        ...player.data(),
+        playerId: player.id,
+      },
+    };
+  }
+}
 

@@ -8,7 +8,10 @@ module.exports.routes = {
   'POST /player':          'PlayerController.login',
   'PUT /player':           'PlayerController.update',
   'DELETE /player':        'PlayerController.logout',
+  'GET /player':           'PlayerController.list',
 
   // game session
-  'POST /game-session': 'GameSessionController.add',
+  'POST /game-session':         'GameSessionController.add',
+  'POST /game-session/approve': 'GameSessionController.approve',
+
 };

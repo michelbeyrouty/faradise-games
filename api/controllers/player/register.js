@@ -21,8 +21,9 @@ module.exports = {
   },
 
   exits: {
-    serverError: { responseType: 'serverError' },
-    success:     { description: 'ok' },
+    userNameAlreadyRegistered: { responseType: 'userNameAlreadyRegistered' },
+    serverError:               { responseType: 'serverError' },
+    success:                   { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
@@ -37,6 +38,11 @@ module.exports = {
 
     } catch (error) {
       switch (_.get(error, 'raw.code') || _.get(error, 'code'))  {
+
+        case 'userNameAlreadyRegistered':
+          const player = _.get(error, 'raw.player') || _.get(error, 'player');
+          exits.userNameAlreadyRegistered(player);
+          break;
 
         default:
           exits.serverError(error);

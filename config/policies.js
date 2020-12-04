@@ -17,9 +17,13 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*':               true,
-  'gameSession/add': 'isAuthenticated',
-  'player/logout':   'isAuthenticated',
-  'player/update':   'isAuthenticated',
+  '*': true,
+
+  'gameSession/add':     'isAuthenticated',
+  'gameSession/approve': 'isAuthenticated',
+
+  'player/logout': 'isAuthenticated',
+  'player/update': 'isAuthenticated',
+  'player/list':   'isAuthenticated',
 
 };

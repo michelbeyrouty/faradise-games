@@ -7,34 +7,26 @@ module.exports = {
 
   inputs: {
     firstName: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     lastName: {
-      type:     'string',
-      required: true,
-    },
-    userName: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     phoneNumber: {
-      type:     'number',
-      required: true,
+      type: 'number',
     },
     email: {
-      type:     'string',
-      required: true,
+      type: 'string',
     },
     dateOfBirthTimeStamp: {
-      type:     'number',
-      required: true,
+      type: 'number',
     },
   },
 
   exits: {
-    serverError: { responseType: 'serverError' },
-    success:     { description: 'ok' },
+    playerNotFound: { responseType: 'playerNotFound' },
+    serverError:    { responseType: 'serverError' },
+    success:        { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
@@ -55,6 +47,10 @@ module.exports = {
 
     } catch (error) {
       switch (_.get(error, 'raw.code') || _.get(error, 'code'))  {
+
+        case 'playerNotFound':
+          exits.playerNotFound();
+          break;
 
         default:
           exits.serverError(error);
