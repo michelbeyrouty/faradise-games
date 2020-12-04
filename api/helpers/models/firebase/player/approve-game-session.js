@@ -24,12 +24,12 @@ module.exports = {
 
     const playerRef = await firebaseDb.collection('players').doc(playerId);
     const player = await playerRef.get();
-    const { pendingGameSessionsList = [], approvedGameSessionsList = [] } = player.data();
+    const { pendingGameSession = '', approvedGameSessionsList = [] } = player.data();
 
-    if (pendingGameSessionsList.includes(gameSessionId)) {
+    if (pendingGameSession === gameSessionId) {
       approvedGameSessionsList.push(gameSessionId);
       await playerRef.update({
-        pendingGameSessionsList: _.remove(pendingGameSessionsList, gameSessionId),
+        pendingGameSession: '',
         approvedGameSessionsList,
       });
     }

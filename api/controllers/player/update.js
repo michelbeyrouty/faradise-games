@@ -24,8 +24,9 @@ module.exports = {
   },
 
   exits: {
-    serverError: { responseType: 'serverError' },
-    success:     { description: 'ok' },
+    playerNotFound: { responseType: 'playerNotFound' },
+    serverError:    { responseType: 'serverError' },
+    success:        { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
@@ -46,6 +47,10 @@ module.exports = {
 
     } catch (error) {
       switch (_.get(error, 'raw.code') || _.get(error, 'code'))  {
+
+        case 'playerNotFound':
+          exits.playerNotFound();
+          break;
 
         default:
           exits.serverError(error);

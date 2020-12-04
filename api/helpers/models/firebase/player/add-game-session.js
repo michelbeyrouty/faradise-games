@@ -15,17 +15,16 @@ module.exports = {
   },
 
   exits: {
-    success: { description: 'gameSession' },
+    success: { description: '' },
   },
 
   fn: async function (inputs, exits) {
 
     const playerRef = await firebaseDb.collection('players').doc(inputs.playerId);
-    const player = await playerRef.get();
-    const { pendingGameSessionsList = [] } = player.data();
-    pendingGameSessionsList.push(inputs.gameSessionId);
 
-    await playerRef.update({ pendingGameSessionsList });
+    await playerRef.update({
+      pendingGameSession: inputs.gameSessionId,
+    });
 
     return exits.success();
   },
