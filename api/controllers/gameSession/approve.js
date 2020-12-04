@@ -25,9 +25,8 @@ module.exports = {
 
       const { approvalsMappedByUserId, gameSessionId } = await sails.helpers.models.firebase.gameSession.getById.with(inputs);
 
-      await _updateGameSessionApprovals(playerId, approvalsMappedByUserId, gameSessionId);
+      let gameSession = await _updateGameSessionApprovals(playerId, approvalsMappedByUserId, gameSessionId);
 
-      let gameSession = {};
       if (!Object.values(approvalsMappedByUserId).includes(false)) {
         gameSession = await _approveGameSession(gameSessionId);
         await _updatePlayersGameSessionsList(approvalsMappedByUserId, gameSessionId);
