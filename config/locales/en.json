@@ -1,7 +1,6 @@
 {
 	"Welcome": "Welcome",
 	"A brand new app.": "A brand new app.",
-	"responses.invalidUserName": "Invalid UserName",
 	"responses.invalidPassword": "Invalid password",
 	"responses.playerNotFound": "player not found",
 	"responses.invalidAuthToken": "invalid auth token",

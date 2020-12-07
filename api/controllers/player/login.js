@@ -18,7 +18,7 @@ module.exports = {
 
   exits: {
     invalidPassword: { responseType: 'invalidPassword' },
-    invalidUserName: { responseType: 'invalidUserName' },
+    playerNotFound:  { responseType: 'playerNotFound' },
     serverError:     { responseType: 'serverError' },
     success:         { description: 'ok' },
   },
@@ -50,8 +50,8 @@ module.exports = {
           exits.invalidPassword();
           break;
 
-        case 'invalidUserName':
-          exits.invalidUserName();
+        case 'playerNotFound':
+          exits.playerNotFound();
           break;
 
         default:
