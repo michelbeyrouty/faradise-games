@@ -17,7 +17,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const playerRef = firebaseDb.collection('players').doc(inputs.playerId);
+    const playerRef = firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(inputs.playerId);
     const player = await playerRef.get();
 
     if (!player.exists) {

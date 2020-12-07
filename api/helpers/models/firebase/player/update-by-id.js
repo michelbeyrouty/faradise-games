@@ -40,8 +40,8 @@ module.exports = {
 
     const { playerId, ...data } = inputs;
 
-    await firebaseDb.collection('players').doc(playerId).update(data);
-    const player = await firebaseDb.collection('players').doc(playerId).get();
+    await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(playerId).update(data);
+    const player = await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(playerId).get();
 
     return exits.success({
       ...player.data(),

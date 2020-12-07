@@ -1,10 +1,10 @@
 class GameSession {
 
-  constructor ({ gameType, playerIdsList = [], minPlayers, maxPlayers, DeliminatorsMap, maxScore, scoreMultiplier = 0 }) {
+  constructor ({ gameType, playerIdsList = [], minPlayers, maxPlayers, deliminatorsMap, maxScore, scoreMultiplier = 0 }) {
     this.gameType = gameType;
     this.minPlayers = minPlayers;
     this.maxPlayers = maxPlayers;
-    this.DeliminatorsMap = DeliminatorsMap;
+    this.deliminatorsMap = deliminatorsMap;
     this.scoreMultiplier = scoreMultiplier;
     this.playerIdsList = playerIdsList;
     this.maxScore = maxScore;
@@ -49,7 +49,7 @@ class GameSession {
     let MAX_SCORE = this.maxScore * (1 + this.scoreMultiplier / 100);
 
     for (const playerId of this.playerIdsList) {
-      MAX_SCORE = MAX_SCORE * this.DeliminatorsMap[this.playerIdsList.length].shift() / 100;
+      MAX_SCORE = MAX_SCORE * this.deliminatorsMap[this.playerIdsList.length].shift() / 100;
       scoresMap[playerId] = MAX_SCORE;
       approvalsMappedByUserId[playerId] = false;
     }

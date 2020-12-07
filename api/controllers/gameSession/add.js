@@ -79,11 +79,11 @@ module.exports = {
 
 async function _fetchGameSession ({ gameType, playerIdsList }) {
 
-  const { minPlayers, maxPlayers, DeliminatorsMap, scoreMultiplier, maxScore }
+  const { minPlayers, maxPlayers, deliminatorsMap, scoreMultiplier, maxScore }
   = await sails.helpers.models.firebase.gameSessionConfig.getByType.with({ gameType });
 
   const gameSession = new sails.classes.GameSession({
-    gameType, playerIdsList, maxScore, minPlayers, maxPlayers, DeliminatorsMap, scoreMultiplier });
+    gameType, playerIdsList, maxScore, minPlayers, maxPlayers, deliminatorsMap, scoreMultiplier });
 
   return gameSession;
 }

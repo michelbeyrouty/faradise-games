@@ -30,11 +30,11 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let gameSession = await firebaseDb.collection('gameSessions').add({
+    let gameSession = await firebaseDb.collection(`${process.env.NODE_ENV}_gameSessions`).add({
       ...inputs,
       approvalStatus: GAME_APPROVAL_STATUS.PENDING,
     });
-    gameSession = await firebaseDb.collection('gameSessions').doc(gameSession.id).get();
+    gameSession = await firebaseDb.collection(`${process.env.NODE_ENV}_gameSessions`).doc(gameSession.id).get();
 
     return exits.success({
       ...gameSession.data(),

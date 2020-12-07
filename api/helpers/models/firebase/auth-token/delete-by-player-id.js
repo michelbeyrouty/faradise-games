@@ -18,7 +18,7 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     const result = await firebaseDb
-        .collection('authTokens')
+        .collection(`${process.env.NODE_ENV}_authTokens`)
         .where('playerId', '==', inputs.playerId)
         .get();
 
@@ -28,7 +28,7 @@ module.exports = {
 
     const authTokensIdList = _mapResult({ result });
     for (authTokenId of authTokensIdList) {
-      await firebaseDb.collection('authTokens').doc(authTokenId).delete();
+      await firebaseDb.collection(`${process.env.NODE_ENV}_authTokens`).doc(authTokenId).delete();
     }
 
     return exits.success();
