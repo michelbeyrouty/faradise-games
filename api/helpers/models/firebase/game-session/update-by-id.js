@@ -25,8 +25,8 @@ module.exports = {
 
     const { gameSessionId, ...data } = inputs;
 
-    await firebaseDb.collection('gameSessions').doc(gameSessionId).update(data);
-    const gameSession = await firebaseDb.collection('gameSessions').doc(gameSessionId).get();
+    await firebaseDb.collection(`${process.env.NODE_ENV}_gameSessions`).doc(gameSessionId).update(data);
+    const gameSession = await firebaseDb.collection(`${process.env.NODE_ENV}_gameSessions`).doc(gameSessionId).get();
 
     return exits.success({
       ...gameSession.data(),

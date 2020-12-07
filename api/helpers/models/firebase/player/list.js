@@ -13,7 +13,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const result = await firebaseDb.collection('players').get();
+    const result = await firebaseDb.collection(`${process.env.NODE_ENV}_players`).get();
     const { playersList } = _mapResult(result);
 
     return exits.success(playersList);

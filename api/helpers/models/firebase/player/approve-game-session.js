@@ -22,7 +22,7 @@ module.exports = {
 
     const { gameSessionId, playerId } = inputs;
 
-    const playerRef = await firebaseDb.collection('players').doc(playerId);
+    const playerRef = await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(playerId);
     const player = await playerRef.get();
     const { pendingGameSession = '', approvedGameSessionsList = [] } = player.data();
 

@@ -29,8 +29,8 @@ module.exports = {
 
     await _validateUniqueUserName(userName);
 
-    await firebaseDb.collection('players').doc(userName).set(inputData);
-    const player = await firebaseDb.collection('players').doc(userName).get();
+    await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(userName).set(inputData);
+    const player = await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(userName).get();
 
     return exits.success({
       ...player.data(),
@@ -44,7 +44,7 @@ module.exports = {
 
 async function _validateUniqueUserName (userName) {
 
-  const playerRef = await firebaseDb.collection('players').doc(userName);
+  const playerRef = await firebaseDb.collection(`${process.env.NODE_ENV}_players`).doc(userName);
   const player = await playerRef.get();
 
   if (player.exists) {

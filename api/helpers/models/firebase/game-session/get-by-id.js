@@ -17,7 +17,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const gameSessionRef = firebaseDb.collection('gameSessions').doc(inputs.gameSessionId);
+    const gameSessionRef = firebaseDb.collection(`${process.env.NODE_ENV}_gameSessions`).doc(inputs.gameSessionId);
     const gameSession = await gameSessionRef.get();
 
     if (!gameSession.exists) {
