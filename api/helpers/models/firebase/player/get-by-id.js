@@ -1,7 +1,7 @@
 module.exports = {
 
-  friendlyName: 'Get gameSession by playerId',
-  description:  'Get gameSession by playerId',
+  friendlyName: 'Get player by playerId',
+  description:  'Get player by playerId',
 
   inputs: {
     playerId: {
@@ -11,8 +11,8 @@ module.exports = {
   },
 
   exits: {
-    invalidUserName: { description: 'invalidUserName' },
-    success:         { description: 'gameSession' },
+    playerNotFound: { description: 'playerNotFound' },
+    success:        { description: 'gameSession' },
   },
 
   fn: async function (inputs, exits) {
