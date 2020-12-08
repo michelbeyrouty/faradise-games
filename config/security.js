@@ -29,8 +29,10 @@ module.exports.security = {
   ***************************************************************************/
 
   cors: {
-    allRoutes:    false,
-    allowOrigins: ['http://localhost:8080', 'https://getscores.netlify.app'],
+    allRoutes:           true,
+    allowOrigins:        '*',
+    allowCredentials:    false,
+    allowRequestHeaders: ['Authorization', 'content-type', 'manager-password', 'user-timestamp'],
   },
 
 
