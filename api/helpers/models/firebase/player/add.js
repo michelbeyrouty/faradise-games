@@ -12,6 +12,10 @@ module.exports = {
       type:     'string',
       required: true,
     },
+    passwordHashed: {
+      type:     'string',
+      required: true,
+    },
     email: {
       type:     'string',
       required: true,
