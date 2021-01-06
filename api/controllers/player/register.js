@@ -28,7 +28,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
-      inputs.password = passwordHash.generate(inputs.password);
+      inputs.passwordHashed = passwordHash.generate(inputs.password);
 
       const player = await sails.helpers.models.firebase.player.add.with(inputs);
 
