@@ -27,12 +27,11 @@ module.exports = {
     try {
       const { userName, password: inputPassword } = inputs;
 
-      const { playerId } = player = await sails.helpers.models.firebase.player.getById.with({ playerId: userName });
-
-      _verifyPassword({
-        password:       inputPassword,
-        hashedPassword: player.password,
+      const { playerId, passwordHashed } = player = await sails.helpers.models.firebase.player.getById.with({
+        playerId: userName,
       });
+
+      _verifyPassword({ inputPassword, passwordHashed });
 
       // Save {authToken: playerId} pair
       const authToken = await sails.helpers.auth.generateToken.with({ playerId });
@@ -65,9 +64,9 @@ module.exports = {
 };
 
 
-function _verifyPassword ({ password, hashedPassword }) {
+function _verifyPassword ({ inputPassword, passwordHashed }) {
 
-  if (!passwordHash.verify(password, hashedPassword)) {
+  if (!passwordHash.verify(inputPassword, passwordHashed)) {
     throw { code: 'invalidPassword' };
   }
 }
