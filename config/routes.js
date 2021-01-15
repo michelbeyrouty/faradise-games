@@ -14,4 +14,7 @@ module.exports.routes = {
   'POST /game-session':         'GameSessionController.add',
   'POST /game-session/approve': 'GameSessionController.approve',
 
+  // statistics
+  'POST /statistics/compute-general-score': 'StatisticsController.compute-general-score',
+
 };
