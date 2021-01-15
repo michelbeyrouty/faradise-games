@@ -62,6 +62,7 @@ module.exports = {
       PLAYER_NOT_FOUND:       404.1,
       GAME_SESSION_NOT_FOUND: 404.2,
       GAME_CONFIG_NOT_FOUND:  404.3,
+      DOMAIN_NOT_FOUND:       404.4,
     },
   },
 

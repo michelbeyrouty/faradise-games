@@ -7,7 +7,7 @@ module.exports = {
   },
 
   exits: {
-    success: { description: 'gameSession' },
+    success: { description: 'playersList' },
   },
 
   fn: async function (inputs, exits) {
