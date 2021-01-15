@@ -15,7 +15,7 @@ class GameSession {
     let scoresMap = {};
     let gameType = '';
 
-    for (const gameSession of this.gameSessionsList) {
+    this.gameSessionsList.forEach((gameSession) => {
 
       scoresMap = gameSession.scoresMap;
       gameType = gameSession.gameType;
@@ -28,24 +28,28 @@ class GameSession {
 
         if (!generalScoresMap[playerId][gameType]) {
           generalScoresMap[playerId][gameType] = {};
+          generalScoresMap[playerId][gameType]['gamesPlayed'] = 0;
+          generalScoresMap[playerId][gameType]['totalScore'] = 0;
         }
 
         if (!generalScoresMap[playerId]['ALL']) {
           generalScoresMap[playerId]['ALL'] = {};
+          generalScoresMap[playerId]['ALL']['gamesPlayed'] = 0;
+          generalScoresMap[playerId]['ALL']['totalScore'] = 0;
         }
 
         // Per gameType
-        generalScoresMap[playerId][gameType]['totalScore'] = (generalScoresMap[playerId][gameType]['totalScore'] || 0) + scoresMap[playerId];
-        generalScoresMap[playerId][gameType]['timesPlayed'] = (generalScoresMap[playerId][gameType]['timesPlayed'] || 0) + 1;
+        generalScoresMap[playerId][gameType]['gamesPlayed'] += 1;
+        generalScoresMap[playerId][gameType]['totalScore'] = generalScoresMap[playerId][gameType]['totalScore'] + scoresMap[playerId];
 
         // All
-        generalScoresMap[playerId]['ALL']['totalScore'] = (generalScoresMap[playerId]['ALL']['totalScore'] || 0) + scoresMap[playerId];
-        generalScoresMap[playerId][gameType]['timesPlayed'] = (generalScoresMap[playerId]['ALL']['timesPlayed'] || 0) + 1;
-
+        generalScoresMap[playerId]['ALL']['gamesPlayed'] += 1;
+        generalScoresMap[playerId]['ALL']['totalScore'] = generalScoresMap[playerId]['ALL']['totalScore'] + scoresMap[playerId];
       }
 
       // set gameSession as processed
-    }
+    });
+
 
     this.generalScoresMap = generalScoresMap;
   }
