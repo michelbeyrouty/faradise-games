@@ -16,5 +16,6 @@ module.exports.routes = {
 
   // statistics
   'POST /statistics/compute-general-score': 'StatisticsController.compute-general-score',
+  'GET /statistics/general-score':          'StatisticsController.get-general-score',
 
 };

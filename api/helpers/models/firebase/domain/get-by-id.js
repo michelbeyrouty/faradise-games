@@ -26,6 +26,7 @@ module.exports = {
 
     return exits.success({
       ...domain.data(),
+      domainId: domain.id,
     });
   },
 };
