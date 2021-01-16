@@ -45,6 +45,7 @@ module.exports = {
       INVALID_AUTH_HEADER:             401.1,
       INVALID_AUTH_TOKEN:              401.2,
       PLAYER_HAS_PENDING_GAME_SESSION: 401.3,
+      GAME_SESSION_NOT_PENDING:        401.4,
     },
   },
 
