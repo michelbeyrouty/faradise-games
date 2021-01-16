@@ -13,9 +13,11 @@ module.exports = {
   },
 
   exits: {
-    gameSessionNotFound: { responseType: 'gameSessionNotFound' },
-    serverError:         { responseType: 'serverError' },
-    success:             { description: 'ok' },
+    gameSessionIsNotPending: { responseType: 'gameSessionIsNotPending' },
+    playerNotInGameSession:  { responseType: 'playerNotInGameSession' },
+    gameSessionNotFound:     { responseType: 'gameSessionNotFound' },
+    serverError:             { responseType: 'serverError' },
+    success:                 { description: 'ok' },
   },
 
   fn: async function (inputs, exits) {
@@ -23,7 +25,8 @@ module.exports = {
 
       const { playerId } = this.req.player;
 
-      const { approvalsMappedByUserId, gameSessionId } = await sails.helpers.models.firebase.gameSession.getById.with(inputs);
+      const { approvalsMappedByUserId, gameSessionId, approvalStatus } = await sails.helpers.models.firebase.gameSession.getById.with(inputs);
+      _checkIfGameSessionIsPending(approvalStatus);
 
       let gameSession = await _updateGameSessionApprovals(playerId, approvalsMappedByUserId, gameSessionId);
 
@@ -41,6 +44,14 @@ module.exports = {
 
         case 'gameSessionNotFound':
           exits.gameSessionNotFound();
+          break;
+
+        case 'gameSessionIsNotPending':
+          exits.gameSessionIsNotPending();
+          break;
+
+        case 'playerNotInGameSession':
+          exits.playerNotInGameSession();
           break;
 
         default:
@@ -92,6 +103,14 @@ async function  _updatePlayersGameSessionsList (approvalsMappedByUserId, gameSes
       gameSessionId,
       playerId,
     });
+  }
+
+}
+
+function _checkIfGameSessionIsPending (approvalStatus) {
+
+  if (approvalStatus !== GAME_APPROVAL_STATUS.PENDING) {
+    throw { code: 'gameSessionIsNotPending' };
   }
 
 }
