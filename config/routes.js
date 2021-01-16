@@ -13,6 +13,7 @@ module.exports.routes = {
   // game session
   'POST /game-session':                'GameSessionController.add',
   'POST /game-session/approve':        'GameSessionController.approve',
+  'POST /game-session/reject':         'GameSessionController.reject',
   'GET  /game-session/configurations': 'GameSessionController.list-configurations',
 
   // statistics

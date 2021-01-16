@@ -9,5 +9,6 @@
 	"responses.invalidAuthHeader": "invalid auth header",
 	"responses.userNameAlreadyRegistered": "user already registered",
 	"responses.playerHasPendingGameSession": "player has pending game session",
-	"responses.domainNotFound": "domain not found"
+	"responses.domainNotFound": "domain not found",
+	"responses.gameSessionIsNotPending": "game session is not pending"
 }

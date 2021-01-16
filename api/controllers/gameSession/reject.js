@@ -2,8 +2,8 @@ const GAME_APPROVAL_STATUS = sails.config.custom.GAME_APPROVAL_STATUS;
 
 module.exports = {
 
-  friendlyName: 'Approve game session',
-  description:  'Approve game session',
+  friendlyName: 'Reject game session',
+  description:  'Reject game session',
 
   inputs: {
     gameSessionId: {
@@ -26,14 +26,12 @@ module.exports = {
       const { playerId } = this.req.player;
 
       const { approvalsMappedByUserId, gameSessionId, approvalStatus } = await sails.helpers.models.firebase.gameSession.getById.with(inputs);
-      _checkIfGameSessionIsPending(approvalStatus);
+      _checkIfGameSessionIsPending (approvalStatus);
 
       let gameSession = await _updateGameSessionApprovals(playerId, approvalsMappedByUserId, gameSessionId);
+      gameSession = await _rejectGameSession(gameSessionId);
 
-      if (!Object.values(approvalsMappedByUserId).includes(false)) {
-        gameSession = await _approveGameSession(gameSessionId);
-        await _updatePlayersGameSessionsList(approvalsMappedByUserId, gameSessionId);
-      }
+      await _updatePlayersGameSessionsList(approvalsMappedByUserId, gameSessionId);
 
       exits.success({
         gameSession,
@@ -74,7 +72,7 @@ async function _updateGameSessionApprovals (playerId, approvalsMappedByUserId, g
     throw { code: 'playerNotInGameSession' };
   }
 
-  approvalsMappedByUserId[playerId] = true;
+  approvalsMappedByUserId[playerId] = 'rejected';
 
   const gameSession = await sails.helpers.models.firebase.gameSession.updateById.with({
     approvalsMappedByUserId,
@@ -84,11 +82,11 @@ async function _updateGameSessionApprovals (playerId, approvalsMappedByUserId, g
   return gameSession;
 }
 
-async function  _approveGameSession (gameSessionId) {
+async function  _rejectGameSession (gameSessionId) {
 
   gameSession = await sails.helpers.models.firebase.gameSession.updateById.with({
     gameSessionId,
-    approvalStatus: GAME_APPROVAL_STATUS.APPROVED,
+    approvalStatus: GAME_APPROVAL_STATUS.REJECTED,
   });
 
   return gameSession;
@@ -99,7 +97,7 @@ async function  _updatePlayersGameSessionsList (approvalsMappedByUserId, gameSes
   const playerIdsList = Object.keys(approvalsMappedByUserId);
 
   for (const playerId of playerIdsList) {
-    await sails.helpers.models.firebase.player.approveGameSession.with({
+    await sails.helpers.models.firebase.player.rejectGameSession.with({
       gameSessionId,
       playerId,
     });
