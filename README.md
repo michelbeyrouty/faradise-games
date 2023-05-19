@@ -1,17 +1,15 @@
-#               Welcome to the faradise games   
-               
-       Author: Michel el beyrouthy [michel.beyrouty@gmail.com]    
+# Welcome to the faradise games   
 
-       "Code is more often read than written."              
-
-
+Backend for game tracking and analytics app between friends
+             
 ## Project setup
 
 ```
 npm install
+node app.js
 ```
 
-### Todos
 
-[]
+# Note
+       "Code is more often read than written."  
 
